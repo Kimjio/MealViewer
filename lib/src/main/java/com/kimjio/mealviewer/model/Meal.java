@@ -2,6 +2,8 @@ package com.kimjio.mealviewer.model;
 
 import android.text.TextUtils;
 
+import androidx.annotation.NonNull;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -101,6 +103,7 @@ public final class Meal {
         return String.format("%s_%s", schoolId, new SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(date)); //ex. 20190424_D100000282
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "Meal{" +

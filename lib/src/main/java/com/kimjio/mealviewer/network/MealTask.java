@@ -3,7 +3,6 @@ package com.kimjio.mealviewer.network;
 import android.os.AsyncTask;
 import android.text.Html;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.kimjio.mealviewer.model.Meal;
 
@@ -20,20 +19,19 @@ import java.util.Locale;
 
 public class MealTask extends AsyncTask<String, Integer, List<Meal>> {
 
-    private static final String TAG = "MealTask";
     private String schoolId;
     private String selectedYear;
     private String selectedMonth;
 
+    private OnTaskListener<List<Meal>> taskListener;
 
     @Override
     protected void onPostExecute(List<Meal> meals) {
-        super.onPostExecute(meals);
+        if (taskListener != null) taskListener.onTaskFinished(meals);
     }
 
-    @Override
-    protected void onProgressUpdate(Integer... values) {
-        super.onProgressUpdate(values);
+    public MealTask(OnTaskListener<List<Meal>> taskListener) {
+        this.taskListener = taskListener;
     }
 
     @Override
