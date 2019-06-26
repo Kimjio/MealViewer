@@ -5,4 +5,5 @@
     values-round/strings.xml for round devices.
     -->
     <string name="hello_world">Hello Square World!</string>
+    <string name="continue_setup_on_phone">Continue setup\non phone…</string>
 </resources>

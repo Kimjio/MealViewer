@@ -47,6 +47,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     public void insert(Meal meal) {
+        if (existsMeal(meal.getId())) return;
         final SQLiteDatabase database = getWritableDatabase();
         final Calendar calendar = Calendar.getInstance();
         calendar.setTime(meal.getDate());
@@ -69,6 +70,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         for (Meal meal : meals) {
             insert(meal);
         }
+    }
+
+    private boolean existsMeal(String id) {
+        final SQLiteDatabase database = getReadableDatabase();
+        boolean exists = false;
+        Cursor cursor = database.query(DatabaseManager.TABLE_NAME_MEAL, null, DatabaseManager.MEAL_COLUMN_ID + " = ?", new String[]{id}, null, null, null);
+        exists = cursor.moveToNext();
+        cursor.close();
+        return exists;
     }
 
     public List<Meal> findAll(String schoolId, Date selectedDate) {

@@ -99,8 +99,15 @@ public final class Meal {
         return Optional.ofNullable(mealStr).filter(meal -> !TextUtils.isEmpty(meal)).orElse(EMPTY);
     }
 
+    /**
+     * DB COLUMN ID 자동 생성
+     *
+     * @param schoolId 학교 ID
+     * @param date 해당 날짜
+     * @return 20190424_D100000282 같이 yyyyMMdd_{학교 ID} 로 반환 됨
+     */
     public static String generateId(String schoolId, Date date) {
-        return String.format("%s_%s", schoolId, new SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(date)); //ex. 20190424_D100000282
+        return String.format("%s_%s", schoolId, new SimpleDateFormat("yyyyMMdd", Locale.getDefault()).format(date));
     }
 
     @NonNull

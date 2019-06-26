@@ -8,4 +8,5 @@ public class Constants {
 
     public static final String DATA_PATH_SCHOOL = "/data_school";
     public static final String DATA_KEY_SCHOOL_ID = "data_school_id";
+    public static final String MESSAGE_PATH_OPEN_ON_PHONE = "/open_on_phone";
 }

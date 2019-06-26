@@ -22,17 +22,17 @@ public class MainActivity extends BaseActivity<MainActivityBinding> {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        MealHelper.getInstance(this).getMeals("D100000282", "dge.go", School.Type.HIGH, meals -> {
-            for (Meal meal : meals) {
-                Log.d(TAG, "onCreate: " + meal.toString());
-            }
-        });
 
         Log.d(TAG, "onCreate: " + MealHelper.getInstance(this).getMeal("D100000282"));
 
         SchoolHelper.getInstance().findSchool("dge.go", "대구소", schools -> {
             for (School school : schools) {
                 Log.d(TAG, "onCreate: " + school.toString());
+                MealHelper.getInstance(this).getMeals(school, meals -> {
+                    for (Meal meal : meals) {
+                        Log.d(TAG, "onCreate: " + meal.toString());
+                    }
+                });
             }
         });
     }

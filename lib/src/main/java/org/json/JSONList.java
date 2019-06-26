@@ -3,6 +3,9 @@ package org.json;
 import java.util.AbstractList;
 import java.util.NoSuchElementException;
 
+/**
+ * JSONArray 를 foreach 에 사용하기 위한 List
+ */
 public class JSONList extends AbstractList<JSONObject> {
 
     private JSONArray array;
@@ -19,8 +22,6 @@ public class JSONList extends AbstractList<JSONObject> {
             throw new NoSuchElementException();
         }
     }
-
-
 
     @Override
     public int size() {

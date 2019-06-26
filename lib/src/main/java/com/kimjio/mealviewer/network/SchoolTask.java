@@ -47,7 +47,8 @@ public class SchoolTask extends AsyncTask<String, Integer, List<School>> {
                                 object.getString("orgCode"),
                                 object.getString("kraOrgNm"),
                                 object.getString("zipAdres"),
-                                object.getInt("schulCrseScCode")
+                                object.getInt("schulCrseScCode"),
+                                strings[0]
                         ));
             }
         } catch (IOException | JSONException e) {
