@@ -49,8 +49,6 @@ public class SchoolSelectActivity extends BaseActivity<SchoolSelectActivityBindi
         PutDataMapRequest dataMapRequest = PutDataMapRequest.create(Constants.DATA_PATH_SCHOOL);
 
         adapter.setOnItemClickListener(school -> {
-            DataMap
-
             Wearable.getMessageClient(this).sendMessage(node.getId(), Constants.MESSAGE_PATH_OPEN_ON_PHONE, null);
 
             dataMapRequest.getDataMap().putString(Constants.DATA_KEY_SCHOOL_ID, school.getSchoolId());
