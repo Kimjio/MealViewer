@@ -1,15 +1,15 @@
-package com.kimjio.mealviewer.helper;
+package com.kimjio.lib.meal.helper;
 
 import android.content.Context;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.kimjio.mealviewer.database.DatabaseHelper;
-import com.kimjio.mealviewer.model.Meal;
-import com.kimjio.mealviewer.model.School;
-import com.kimjio.mealviewer.network.MealTask;
-import com.kimjio.mealviewer.network.OnTaskListener;
+import com.kimjio.lib.meal.database.DatabaseHelper;
+import com.kimjio.lib.meal.model.Meal;
+import com.kimjio.lib.meal.model.School;
+import com.kimjio.lib.meal.network.MealTask;
+import com.kimjio.lib.meal.network.OnTaskListener;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -17,7 +17,7 @@ import java.util.List;
 
 public final class MealHelper {
     private static MealHelper INSTANCE;
-    private DatabaseHelper helper;
+    private final DatabaseHelper helper;
 
     private MealHelper(@NonNull Context context) {
         helper = DatabaseHelper.getInstance(context);

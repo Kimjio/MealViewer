@@ -6,8 +6,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.kimjio.lib.meal.model.School;
 import com.kimjio.mealviewer.R;
-import com.kimjio.mealviewer.model.School;
 
 import java.util.List;
 

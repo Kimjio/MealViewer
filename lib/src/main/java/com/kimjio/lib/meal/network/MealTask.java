@@ -1,10 +1,10 @@
-package com.kimjio.mealviewer.network;
+package com.kimjio.lib.meal.network;
 
 import android.os.AsyncTask;
 import android.text.Html;
 import android.text.TextUtils;
 
-import com.kimjio.mealviewer.model.Meal;
+import com.kimjio.lib.meal.model.Meal;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
@@ -23,7 +23,7 @@ public class MealTask extends AsyncTask<String, Integer, List<Meal>> {
     private String selectedYear;
     private String selectedMonth;
 
-    private OnTaskListener<List<Meal>> taskListener;
+    private final OnTaskListener<List<Meal>> taskListener;
 
     @Override
     protected void onPostExecute(List<Meal> meals) {

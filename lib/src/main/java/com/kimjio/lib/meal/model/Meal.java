@@ -1,4 +1,4 @@
-package com.kimjio.mealviewer.model;
+package com.kimjio.lib.meal.model;
 
 import android.text.TextUtils;
 

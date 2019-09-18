@@ -10,7 +10,7 @@ import com.kimjio.mealviewer.databinding.SchoolItemBinding;
 
 public class SchoolViewHolder extends RecyclerView.ViewHolder {
 
-    public SchoolItemBinding binding;
+    public final SchoolItemBinding binding;
 
     public SchoolViewHolder(@NonNull View itemView) {
         super(itemView);

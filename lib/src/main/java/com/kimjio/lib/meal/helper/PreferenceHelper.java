@@ -1,24 +1,24 @@
-package com.kimjio.mealviewer.helper;
+package com.kimjio.lib.meal.helper;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.kimjio.mealviewer.Constants;
-import com.kimjio.mealviewer.model.School;
+import com.kimjio.lib.meal.Constants;
+import com.kimjio.lib.meal.model.School;
 
 public class PreferenceHelper {
-    private SharedPreferences preference;
+    private final SharedPreferences preference;
     private static PreferenceHelper INSTANCE;
 
-    private PreferenceHelper(String name, Context context) {
-        preference = context.getSharedPreferences(name, Context.MODE_PRIVATE);
+    private PreferenceHelper(Context context) {
+        preference = context.getSharedPreferences(Constants.PREF_NAME, Context.MODE_PRIVATE);
     }
 
     public static PreferenceHelper getInstance(Context context) {
         if (INSTANCE == null)
             synchronized (PreferenceHelper.class) {
                 if (INSTANCE == null)
-                    INSTANCE = new PreferenceHelper(Constants.PREF_NAME, context);
+                    INSTANCE = new PreferenceHelper(context);
             }
         return INSTANCE;
     }

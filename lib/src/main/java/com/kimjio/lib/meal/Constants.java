@@ -1,4 +1,4 @@
-package com.kimjio.mealviewer;
+package com.kimjio.lib.meal;
 
 public class Constants {
     public static final String PREF_NAME = "perf_viewer";

@@ -1,10 +1,10 @@
-package com.kimjio.mealviewer.helper;
+package com.kimjio.lib.meal.helper;
 
 import androidx.annotation.NonNull;
 
-import com.kimjio.mealviewer.model.School;
-import com.kimjio.mealviewer.network.OnTaskListener;
-import com.kimjio.mealviewer.network.SchoolTask;
+import com.kimjio.lib.meal.model.School;
+import com.kimjio.lib.meal.network.OnTaskListener;
+import com.kimjio.lib.meal.network.SchoolTask;
 
 import java.util.List;
 

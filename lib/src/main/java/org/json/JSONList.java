@@ -8,7 +8,7 @@ import java.util.NoSuchElementException;
  */
 public class JSONList extends AbstractList<JSONObject> {
 
-    private JSONArray array;
+    private final JSONArray array;
 
     public JSONList(JSONArray array) {
         this.array = array;

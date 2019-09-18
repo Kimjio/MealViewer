@@ -3,12 +3,12 @@ package com.kimjio.mealviewer.activity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.kimjio.lib.meal.helper.MealHelper;
+import com.kimjio.lib.meal.helper.SchoolHelper;
+import com.kimjio.lib.meal.model.Meal;
+import com.kimjio.lib.meal.model.School;
 import com.kimjio.mealviewer.R;
 import com.kimjio.mealviewer.databinding.MainActivityBinding;
-import com.kimjio.mealviewer.helper.MealHelper;
-import com.kimjio.mealviewer.helper.SchoolHelper;
-import com.kimjio.mealviewer.model.Meal;
-import com.kimjio.mealviewer.model.School;
 
 public class MainActivity extends BaseActivity<MainActivityBinding> {
 

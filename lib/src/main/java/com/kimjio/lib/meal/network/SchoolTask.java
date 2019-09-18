@@ -1,8 +1,8 @@
-package com.kimjio.mealviewer.network;
+package com.kimjio.lib.meal.network;
 
 import android.os.AsyncTask;
 
-import com.kimjio.mealviewer.model.School;
+import com.kimjio.lib.meal.model.School;
 
 import org.json.JSONException;
 import org.json.JSONList;
@@ -16,7 +16,7 @@ import java.util.Locale;
 
 public class SchoolTask extends AsyncTask<String, Integer, List<School>> {
 
-    private OnTaskListener<List<School>> taskListener;
+    private final OnTaskListener<List<School>> taskListener;
 
     public SchoolTask(OnTaskListener<List<School>> taskListener) {
         this.taskListener = taskListener;

@@ -1,4 +1,4 @@
-package com.kimjio.mealviewer.model;
+package com.kimjio.lib.meal.model;
 
 import androidx.annotation.NonNull;
 
@@ -103,7 +103,7 @@ public class School {
         HIGH(4),
         MIDDLE_HIGH(5);
 
-        private int id;
+        private final int id;
 
         Type(int id) {
             this.id = id;

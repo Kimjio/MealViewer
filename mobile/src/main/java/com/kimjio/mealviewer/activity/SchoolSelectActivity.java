@@ -10,15 +10,14 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.wearable.DataItem;
-import com.google.android.gms.wearable.DataMap;
 import com.google.android.gms.wearable.Node;
 import com.google.android.gms.wearable.PutDataMapRequest;
 import com.google.android.gms.wearable.PutDataRequest;
 import com.google.android.gms.wearable.Wearable;
-import com.kimjio.mealviewer.Constants;
+import com.kimjio.lib.meal.Constants;
+import com.kimjio.lib.meal.helper.SchoolHelper;
 import com.kimjio.mealviewer.R;
 import com.kimjio.mealviewer.databinding.SchoolSelectActivityBinding;
-import com.kimjio.mealviewer.helper.SchoolHelper;
 import com.kimjio.mealviewer.widget.SchoolAdapter;
 
 public class SchoolSelectActivity extends BaseActivity<SchoolSelectActivityBinding> implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {

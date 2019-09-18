@@ -1,4 +1,4 @@
-package com.kimjio.mealviewer;
+package com.kimjio.lib.meal;
 
 import android.content.Context;
 

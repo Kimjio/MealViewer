@@ -1,7 +1,6 @@
 package com.kimjio.mealviewer.activity;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -11,7 +10,6 @@ import androidx.wear.activity.ConfirmationActivity;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.tasks.Task;
 import com.google.android.gms.wearable.DataClient;
 import com.google.android.gms.wearable.DataEvent;
 import com.google.android.gms.wearable.DataEventBuffer;
@@ -22,7 +20,7 @@ import com.google.android.gms.wearable.MessageClient;
 import com.google.android.gms.wearable.MessageEvent;
 import com.google.android.gms.wearable.Node;
 import com.google.android.gms.wearable.Wearable;
-import com.kimjio.mealviewer.Constants;
+import com.kimjio.lib.meal.Constants;
 import com.kimjio.mealviewer.R;
 import com.kimjio.mealviewer.databinding.SchoolSelectActivityBinding;
 
@@ -78,14 +76,14 @@ public class SchoolSelectActivity extends BaseActivity<SchoolSelectActivityBindi
     @Override
     protected void onResume() {
         super.onResume();
-        //Wearable.getMessageClient(this).addListener(this);
+        Wearable.getMessageClient(this).addListener(this);
         Wearable.getDataClient(this).addListener(this);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        //Wearable.getMessageClient(this).removeListener(this);
+        Wearable.getMessageClient(this).removeListener(this);
         Wearable.getDataClient(this).removeListener(this);
     }
 

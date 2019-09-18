@@ -1,4 +1,4 @@
-package com.kimjio.mealviewer.database;
+package com.kimjio.lib.meal.database;
 
 final class DatabaseManager {
     static final int DB_VERSION = 1;

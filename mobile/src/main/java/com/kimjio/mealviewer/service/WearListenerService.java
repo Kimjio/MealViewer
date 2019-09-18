@@ -5,17 +5,12 @@ import android.util.Log;
 
 import com.google.android.gms.wearable.MessageEvent;
 import com.google.android.gms.wearable.WearableListenerService;
-import com.kimjio.mealviewer.Constants;
+import com.kimjio.lib.meal.Constants;
 import com.kimjio.mealviewer.activity.SchoolSelectActivity;
 
 public class WearListenerService extends WearableListenerService {
 
     private static final String TAG = "WearListenerService";
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-    }
 
     @Override
     public void onMessageReceived(MessageEvent messageEvent) {

@@ -1,4 +1,4 @@
-package com.kimjio.mealviewer.database;
+package com.kimjio.lib.meal.database;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.kimjio.mealviewer.model.Meal;
+import com.kimjio.lib.meal.model.Meal;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -20,8 +20,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static DatabaseHelper INSTANCE;
 
-    private DatabaseHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+    private DatabaseHelper(@Nullable Context context) {
+        super(context, "meal_viewer.db", null, DatabaseManager.DB_VERSION);
     }
 
     @NonNull
@@ -29,7 +29,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (INSTANCE == null)
             synchronized (DatabaseHelper.class) {
                 if (INSTANCE == null)
-                    INSTANCE = new DatabaseHelper(context, DatabaseManager.DB_NAME + ".db", null, DatabaseManager.DB_VERSION);
+                    INSTANCE = new DatabaseHelper(context);
             }
         return INSTANCE;
     }
@@ -74,7 +74,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private boolean existsMeal(String id) {
         final SQLiteDatabase database = getReadableDatabase();
-        boolean exists = false;
+        boolean exists;
         Cursor cursor = database.query(DatabaseManager.TABLE_NAME_MEAL, null, DatabaseManager.MEAL_COLUMN_ID + " = ?", new String[]{id}, null, null, null);
         exists = cursor.moveToNext();
         cursor.close();
