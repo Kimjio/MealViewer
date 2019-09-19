@@ -4,6 +4,8 @@ import android.os.AsyncTask;
 import android.text.Html;
 import android.text.TextUtils;
 
+import androidx.annotation.RestrictTo;
+
 import com.kimjio.lib.meal.model.Meal;
 
 import org.jsoup.Jsoup;
@@ -17,21 +19,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import static androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP_PREFIX;
+
+@RestrictTo(LIBRARY_GROUP_PREFIX)
 public class MealTask extends AsyncTask<String, Integer, List<Meal>> {
 
+    private final OnTaskListener<List<Meal>> taskListener;
     private String schoolId;
     private String selectedYear;
     private String selectedMonth;
 
-    private final OnTaskListener<List<Meal>> taskListener;
+    public MealTask(OnTaskListener<List<Meal>> taskListener) {
+        this.taskListener = taskListener;
+    }
 
     @Override
     protected void onPostExecute(List<Meal> meals) {
         if (taskListener != null) taskListener.onTaskFinished(meals);
-    }
-
-    public MealTask(OnTaskListener<List<Meal>> taskListener) {
-        this.taskListener = taskListener;
     }
 
     @Override

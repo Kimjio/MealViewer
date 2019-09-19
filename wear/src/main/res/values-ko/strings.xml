@@ -2,4 +2,5 @@
 <resources>
     <string name="app_name">급식뷰어</string>
     <string name="continue_setup_on_phone">휴대전화에서 설정\n계속하기</string>
+    <string name="select_menu_country">지역</string>
 </resources>

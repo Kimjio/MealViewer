@@ -36,8 +36,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("PRAGMA foreign_keys = ON;");
+        //db.execSQL("PRAGMA foreign_keys = ON;");
         db.execSQL(DatabaseManager.getCreateTableMeal());
+    }
+
+    @Override
+    public void onConfigure(SQLiteDatabase db) {
+        db.setForeignKeyConstraintsEnabled(true);
     }
 
     @Override

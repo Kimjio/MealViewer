@@ -12,16 +12,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
-                android:id="@+id/image"
-                android:layout_width="0dp"
-                android:layout_height="88dp"
-                android:background="#11000000"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_school" />
-
             <TextView
                 android:id="@+id/text_name"
                 android:layout_width="wrap_content"
@@ -29,8 +19,9 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
+                app:layout_constraintBottom_toTopOf="@+id/text_address"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/image"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:text="학교명" />
 
             <TextView
@@ -56,10 +47,9 @@
                 android:singleLine="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/text_name"
-                tools:text="대구광역시 구지면 창리 으어어어어어어어어" />
+                tools:text="대구광역시 구지면 창리" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

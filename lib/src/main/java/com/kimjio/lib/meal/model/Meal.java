@@ -114,12 +114,12 @@ public final class Meal {
     @Override
     public String toString() {
         return "Meal{" +
-                "id='" + id + '\'' +
+                "\nid='" + id + '\'' +
                 ", schoolId='" + schoolId + '\'' +
                 ",\nmealBreakfast=\n'" + mealBreakfast + '\'' +
                 ",\nmealLunch=\n'" + mealLunch + '\'' +
                 ",\nmealDinner=\n'" + mealDinner + '\'' +
                 ",\ndate=" + date +
-                '}';
+                "\n}";
     }
 }

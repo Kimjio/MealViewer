@@ -16,6 +16,7 @@
         android:supportsRtl="true"
         android:theme="@android:style/Theme.DeviceDefault"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".activity.OpenOnPhoneActivity"></activity>
 
         <uses-library
             android:name="com.google.android.wearable"
@@ -37,14 +38,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.SchoolSelectActivity" >
+        <activity android:name=".activity.SchoolSelectActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name="androidx.wear.activity.ConfirmationActivity" />
     </application>
 

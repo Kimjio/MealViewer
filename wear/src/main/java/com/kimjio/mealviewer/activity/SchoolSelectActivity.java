@@ -3,10 +3,14 @@ package com.kimjio.mealviewer.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearSnapHelper;
+import androidx.recyclerview.widget.SnapHelper;
 import androidx.wear.activity.ConfirmationActivity;
+import androidx.wear.widget.WearableLinearLayoutManager;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -23,10 +27,14 @@ import com.google.android.gms.wearable.Wearable;
 import com.kimjio.lib.meal.Constants;
 import com.kimjio.mealviewer.R;
 import com.kimjio.mealviewer.databinding.SchoolSelectActivityBinding;
+import com.kimjio.mealviewer.widget.OffsetItemDecoration;
+import com.kimjio.mealviewer.widget.ScaleLinearLayoutManager;
+import com.kimjio.mealviewer.widget.SelectMenuAdapter;
 
-public class SchoolSelectActivity extends BaseActivity<SchoolSelectActivityBinding> implements DataClient.OnDataChangedListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, MessageClient.OnMessageReceivedListener {
+public class SchoolSelectActivity extends BaseActivity<SchoolSelectActivityBinding> implements DataClient.OnDataChangedListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private static final String TAG = "SchoolSelectActivity";
+    private static final int WAIT_FOR_RESULT = 0;
 
     private GoogleApiClient apiClient;
     private Node node;
@@ -46,18 +54,20 @@ public class SchoolSelectActivity extends BaseActivity<SchoolSelectActivityBindi
                 .addOnConnectionFailedListener(this)
                 .build();
 
-        binding.imageView.setOnClickListener(v -> openOnPhone());
+
+        SnapHelper snapHelper = new LinearSnapHelper();
+        snapHelper.attachToRecyclerView(binding.list);
+        binding.list.addItemDecoration(new OffsetItemDecoration(this));
+        binding.list.setAdapter(new SelectMenuAdapter());
+        binding.list.setLayoutManager(new ScaleLinearLayoutManager(this));
+        //binding.imageView.setOnClickListener(v -> openOnPhone());
     }
 
     private void openOnPhone() {
         if (node != null && apiClient != null && apiClient.isConnected()) {
             startActivity(new Intent(this, ConfirmationActivity.class).putExtra(ConfirmationActivity.EXTRA_ANIMATION_TYPE, ConfirmationActivity.OPEN_ON_PHONE_ANIMATION));
-            Wearable.getMessageClient(this).sendMessage(node.getId(), Constants.MESSAGE_PATH_OPEN_ON_PHONE, null).addOnCompleteListener(task -> {
-                if (!task.isSuccessful()) {
-                    Log.d(TAG, "openOnPhone: FAIL: " + task.getResult());
-                    Log.w(TAG, "openOnPhone: FAIL", task.getException());
-                }
-            });
+            startActivityForResult(new Intent(this, OpenOnPhoneActivity.class), WAIT_FOR_RESULT);
+            Wearable.getMessageClient(this).sendMessage(node.getId(), Constants.MESSAGE_PATH_OPEN_ON_PHONE, null);
         }
     }
 
@@ -76,23 +86,13 @@ public class SchoolSelectActivity extends BaseActivity<SchoolSelectActivityBindi
     @Override
     protected void onResume() {
         super.onResume();
-        Wearable.getMessageClient(this).addListener(this);
         Wearable.getDataClient(this).addListener(this);
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
-        Wearable.getMessageClient(this).removeListener(this);
+    protected void onDestroy() {
+        super.onDestroy();
         Wearable.getDataClient(this).removeListener(this);
-    }
-
-    @Override
-    public void onMessageReceived(@NonNull MessageEvent messageEvent) {
-        if (messageEvent.getPath().equals(Constants.DATA_PATH_SCHOOL)) {
-            DataMap map = DataMap.fromByteArray(messageEvent.getData());
-            startActivity(new Intent(this, ConfirmationActivity.class).putExtra(ConfirmationActivity.EXTRA_ANIMATION_TYPE, ConfirmationActivity.SUCCESS_ANIMATION).putExtra(ConfirmationActivity.EXTRA_MESSAGE, map.getString(Constants.DATA_KEY_SCHOOL_ID)));
-        }
     }
 
     @Override
@@ -102,8 +102,11 @@ public class SchoolSelectActivity extends BaseActivity<SchoolSelectActivityBindi
                 DataItem item = event.getDataItem();
                 if (item.getUri().getPath() != null && item.getUri().getPath().equals(Constants.DATA_PATH_SCHOOL)) {
                     DataMap dataMap = DataMapItem.fromDataItem(item).getDataMap();
+                    finishActivity(WAIT_FOR_RESULT);
                     startActivity(new Intent(this, ConfirmationActivity.class).putExtra(ConfirmationActivity.EXTRA_ANIMATION_TYPE, ConfirmationActivity.SUCCESS_ANIMATION).putExtra(ConfirmationActivity.EXTRA_MESSAGE, dataMap.getString(Constants.DATA_KEY_SCHOOL_ID)));
                 }
+            } else if (event.getType() == DataEvent.TYPE_DELETED) {
+                Log.d(TAG, "onDataChanged: " + event.getDataItem().getUri().getPath());
             }
         }
     }

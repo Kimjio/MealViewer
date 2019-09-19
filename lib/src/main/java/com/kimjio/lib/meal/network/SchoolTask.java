@@ -2,6 +2,8 @@ package com.kimjio.lib.meal.network;
 
 import android.os.AsyncTask;
 
+import androidx.annotation.RestrictTo;
+
 import com.kimjio.lib.meal.model.School;
 
 import org.json.JSONException;
@@ -14,6 +16,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import static androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP_PREFIX;
+
+@RestrictTo(LIBRARY_GROUP_PREFIX)
 public class SchoolTask extends AsyncTask<String, Integer, List<School>> {
 
     private final OnTaskListener<List<School>> taskListener;

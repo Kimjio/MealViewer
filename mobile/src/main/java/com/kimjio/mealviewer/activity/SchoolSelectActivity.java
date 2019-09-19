@@ -1,20 +1,22 @@
 package com.kimjio.mealviewer.activity;
 
+import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.tasks.Task;
-import com.google.android.gms.wearable.DataItem;
+import com.google.android.gms.wearable.DataClient;
 import com.google.android.gms.wearable.Node;
 import com.google.android.gms.wearable.PutDataMapRequest;
 import com.google.android.gms.wearable.PutDataRequest;
 import com.google.android.gms.wearable.Wearable;
 import com.kimjio.lib.meal.Constants;
+import com.kimjio.lib.meal.helper.PreferenceHelper;
 import com.kimjio.lib.meal.helper.SchoolHelper;
 import com.kimjio.mealviewer.R;
 import com.kimjio.mealviewer.databinding.SchoolSelectActivityBinding;
@@ -25,8 +27,9 @@ public class SchoolSelectActivity extends BaseActivity<SchoolSelectActivityBindi
     private static final String TAG = "SchoolSelectActivity";
 
     private GoogleApiClient apiClient;
-    private Node node;
     private SchoolAdapter adapter;
+
+    private String url;
 
     @Override
     protected int layoutId() {
@@ -45,24 +48,30 @@ public class SchoolSelectActivity extends BaseActivity<SchoolSelectActivityBindi
                 .addOnConnectionFailedListener(this)
                 .build();
 
-        PutDataMapRequest dataMapRequest = PutDataMapRequest.create(Constants.DATA_PATH_SCHOOL);
+        binding.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                url = getResources().getStringArray(R.array.cont_education_urls)[position];
+            }
 
-        adapter.setOnItemClickListener(school -> {
-            Wearable.getMessageClient(this).sendMessage(node.getId(), Constants.MESSAGE_PATH_OPEN_ON_PHONE, null);
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
 
-            dataMapRequest.getDataMap().putString(Constants.DATA_KEY_SCHOOL_ID, school.getSchoolId());
-            PutDataRequest dataRequest = dataMapRequest.asPutDataRequest();
-            Task<DataItem> itemTask = Wearable.getDataClient(this).putDataItem(dataRequest);
-            itemTask.addOnCompleteListener(task -> {
-                if (task.isSuccessful()) {
-                    Log.d(TAG, "onCreate: OK");
-                } else {
-                    Log.w(TAG, "onCreate: ERROR: ", task.getException());
-                }
-            });
+            }
         });
 
-        binding.btnSearch.setOnClickListener(v -> SchoolHelper.getInstance().findSchool("dge.go", binding.inputSchoolName.getText().toString(), schools -> {
+        adapter.setOnItemClickListener(school -> {
+            Wearable.getDataClient(this).deleteDataItems(new Uri.Builder().scheme(PutDataRequest.WEAR_URI_SCHEME).path(Constants.DATA_PATH_SCHOOL).build(), DataClient.FILTER_PREFIX);
+            /*PutDataMapRequest dataMapRequest = PutDataMapRequest.create(Constants.DATA_PATH_SCHOOL);
+            dataMapRequest.getDataMap().putString(Constants.DATA_KEY_SCHOOL_ID, school.getSchoolId());
+            PutDataRequest dataRequest = dataMapRequest.asPutDataRequest();
+            Wearable.getDataClient(this).putDataItem(dataRequest);*/
+
+            PreferenceHelper preferenceHelper = getPreferenceHelper();
+            preferenceHelper.putSchoolData(school, url);
+        });
+
+        binding.btnSearch.setOnClickListener(v -> SchoolHelper.getInstance().findSchool(url, binding.inputSchoolName.getText().toString(), schools -> {
             adapter.setSchools(schools);
         }));
 
@@ -82,11 +91,7 @@ public class SchoolSelectActivity extends BaseActivity<SchoolSelectActivityBindi
 
     @Override
     public void onConnected(@Nullable Bundle bundle) {
-        Wearable.getNodeClient(this).getConnectedNodes().addOnSuccessListener(nodes -> {
-            for (Node node : nodes) {
-                this.node = node;
-            }
-        });
+
     }
 
     @Override

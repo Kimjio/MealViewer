@@ -15,6 +15,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <com.kimjio.mealviewer.widget.HintSpinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:entries="@array/cont_educations"
+            android:hint="@string/hint_select_cont"
+            android:prompt="@string/hint_select_cont"
+            android:spinnerMode="dialog"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/app_bar" />
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/input_layout_school_name"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -25,8 +40,9 @@
             android:layout_marginEnd="8dp"
             app:endIconMode="custom"
             app:layout_constraintEnd_toStartOf="@+id/btn_search"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/app_bar">
+            app:layout_constraintTop_toBottomOf="@+id/spinner">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_school_name"
@@ -46,19 +62,19 @@
             app:layout_constraintBottom_toBottomOf="@+id/input_layout_school_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/input_layout_school_name"
-            app:srcCompat="@drawable/ic_search" />
+            app:srcCompat="@drawable/ic_search"
+            android:contentDescription="@android:string/search_go" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/list_school"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="8dp"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/input_layout_school_name"
-            app:spanCount="2"
             tools:listitem="@layout/school_item" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

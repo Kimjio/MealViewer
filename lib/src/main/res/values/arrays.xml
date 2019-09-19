@@ -1,30 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="contEducations">
-        <item>서울</item>
-        <item>부산</item>
-        <item>대구</item>
-        <item>인천</item>
-        <item>광주</item>
-        <item>대전</item>
-        <item>울산</item>
-        <item>세종</item>
-        <item>경기</item>
-        <item>강원</item>
-        <item>충북</item>
-        <item>충남</item>
-        <item>전북</item>
-        <item>전남</item>
-        <item>경북</item>
-        <item>경남</item>
-        <item>제주</item>
+    <string-array name="cont_educations">
+        <item>Seoul</item>
+        <item>Busan</item>
+        <item>Daegu</item>
+        <item>Incheon</item>
+        <item>Gwangju</item>
+        <item>Daejeon</item>
+        <item>Ulsan</item>
+        <item>Sejong</item>
+        <item>Gyeonggi</item>
+        <item>Gangwon</item>
+        <item>Chungbuk</item>
+        <item>Chungnam</item>
+        <item>Jeonbuk</item>
+        <item>Jeonnam</item>
+        <item>Gyeongbuk</item>
+        <item>Gyeongnam</item>
+        <item>Jeju</item>
     </string-array>
 
-    <string-array name="schoolType">
-        <item>유치원</item>
-        <item>초등학교</item>
-        <item>중학교</item>
-        <item>고등학교</item>
+    <string-array name="cont_education_urls">
+        <item>sen.go</item>
+        <item>pen.go</item>
+        <item>dge.go</item>
+        <item>ice.go</item>
+        <item>gen.go</item>
+        <item>dje.go</item>
+        <item>use.go</item>
+        <item>sje.go</item>
+        <item>goe.go</item>
+        <item>kwe.go</item>
+        <item>cbe.go</item>
+        <item>cne.go</item>
+        <item>jbe.go</item>
+        <item>jne.go</item>
+        <item>gbe</item>
+        <item>gne.go</item>
+        <item>jje.go</item>
+    </string-array>
+
+    <string-array name="school_type">
+        <item>Kindergarten</item>
+        <item>Elementary School</item>
+        <item>Middle School</item>
+        <item>High School</item>
+        <item>Middle·High School</item>
     </string-array>
 
 </resources>

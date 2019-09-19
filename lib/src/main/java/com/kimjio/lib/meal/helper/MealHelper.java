@@ -70,7 +70,7 @@ public final class MealHelper {
             new MealTask(result -> {
                 if (taskListener != null) taskListener.onTaskFinished(result);
                 helper.inserts(result);
-            }).execute(neisLocalDomain, schoolId, type.toString(), Integer.toString(calendar.get(Calendar.YEAR)), Integer.toString(calendar.get(Calendar.MONTH) + 1));
+            }).execute(neisLocalDomain, schoolId, Integer.toString(type.toInteger()), Integer.toString(calendar.get(Calendar.YEAR)), Integer.toString(calendar.get(Calendar.MONTH) + 1));
         } else {
             if (taskListener != null) taskListener.onTaskFinished(meals);
         }

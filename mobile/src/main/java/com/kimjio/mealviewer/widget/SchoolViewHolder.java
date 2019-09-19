@@ -8,12 +8,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.kimjio.mealviewer.databinding.SchoolItemBinding;
 
-public class SchoolViewHolder extends RecyclerView.ViewHolder {
+import java.util.Objects;
 
-    public final SchoolItemBinding binding;
+class SchoolViewHolder extends RecyclerView.ViewHolder {
 
-    public SchoolViewHolder(@NonNull View itemView) {
+    @NonNull
+    final SchoolItemBinding binding;
+
+    SchoolViewHolder(@NonNull View itemView) {
         super(itemView);
-        binding = DataBindingUtil.bind(itemView);
+        binding = Objects.requireNonNull(DataBindingUtil.bind(itemView));
     }
 }
