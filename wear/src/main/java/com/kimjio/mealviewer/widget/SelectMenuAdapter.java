@@ -13,6 +13,7 @@ import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;
 import androidx.wear.widget.WearableRecyclerView;
 
+import com.kimjio.handwritingfix.HandwritingHelper;
 import com.kimjio.mealviewer.R;
 
 public class SelectMenuAdapter extends WearableRecyclerView.Adapter<SelectMenuViewHolder> {
@@ -50,6 +51,8 @@ public class SelectMenuAdapter extends WearableRecyclerView.Adapter<SelectMenuVi
                 break;
             case 2:
                 holder.binding.titleEditable.setHint(R.string.hint_school_name);
+                new HandwritingHelper().attachToTextView(holder.binding.titleEditable);
+                holder.binding.image.setImageResource(R.drawable.ic_rounded_school_name);
                 break;
             case 3:
                 holder.binding.title.setText(android.R.string.search_go);
