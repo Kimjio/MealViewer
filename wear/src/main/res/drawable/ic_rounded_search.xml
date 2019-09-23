@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<drawable xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    class="androidx.wear.widget.RoundedDrawable"
+    android:src="@drawable/ic_search"
+    app:backgroundColor="#CCC"
+    app:radius="32dp" />

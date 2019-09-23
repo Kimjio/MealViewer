@@ -16,8 +16,6 @@ import java.util.Objects;
 
 public class OffsetItemDecoration extends RecyclerView.ItemDecoration {
 
-    private static final String TAG = "OffsetItemDecoration";
-
     private Context context;
 
     public OffsetItemDecoration(Context context) {
@@ -39,8 +37,6 @@ public class OffsetItemDecoration extends RecyclerView.ItemDecoration {
             ((ViewGroup.MarginLayoutParams) view.getLayoutParams()).bottomMargin = 0;
             setupOutRect(outRect, offset, false);
         }
-
-
     }
 
     private void setupOutRect(Rect rect, int offset, boolean top) {

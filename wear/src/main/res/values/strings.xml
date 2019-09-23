@@ -7,4 +7,6 @@
     <string name="hello_world" translatable="false">Hello Square World!</string>
     <string name="continue_setup_on_phone">Continue setup\non phone…</string>
     <string name="select_menu_country">Country</string>
+    <string name="hint_school_name">School Name</string>
+    <string name="select_menu_type">Type</string>
 </resources>

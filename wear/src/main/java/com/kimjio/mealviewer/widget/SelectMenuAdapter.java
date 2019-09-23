@@ -1,8 +1,13 @@
 package com.kimjio.mealviewer.widget;
 
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.IntDef;
 import androidx.annotation.NonNull;
@@ -18,7 +23,7 @@ public class SelectMenuAdapter extends WearableRecyclerView.Adapter<SelectMenuVi
     @Override
     @ViewType
     public int getItemViewType(int position) {
-        if (position == getItemCount() - 1)
+        if (position == 2)
             return TYPE_EDITABLE;
         return TYPE_TITLE;
     }
@@ -36,9 +41,25 @@ public class SelectMenuAdapter extends WearableRecyclerView.Adapter<SelectMenuVi
     public void onBindViewHolder(@NonNull SelectMenuViewHolder holder, int position) {
         switch (position) {
             case 0:
-            default:
                 holder.binding.title.setText(R.string.select_menu_country);
                 holder.binding.image.setImageResource(R.drawable.ic_rounded_location);
+                break;
+            case 1:
+                holder.binding.title.setText(R.string.select_menu_type);
+                holder.binding.image.setImageResource(R.drawable.ic_rounded_school);
+                break;
+            case 2:
+                holder.binding.titleEditable.setHint(R.string.hint_school_name);
+                break;
+            case 3:
+                holder.binding.title.setText(android.R.string.search_go);
+                holder.binding.image.setImageResource(R.drawable.ic_rounded_search);
+                break;
+            case 4:
+                holder.binding.title.setText(R.string.common_open_on_phone);
+                holder.binding.image.setImageResource(R.drawable.ic_rounded_open_on_phone);
+                break;
+            default:
                 break;
         }
     }
@@ -52,7 +73,7 @@ public class SelectMenuAdapter extends WearableRecyclerView.Adapter<SelectMenuVi
           검색 Butt
           OOP Butt
          */
-        return 9;
+        return 5;
     }
 
     @IntDef({TYPE_TITLE, TYPE_EDITABLE})
