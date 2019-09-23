@@ -33,7 +33,7 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Location" />
 
-        <androidx.appcompat.widget.AppCompatEditText
+        <EditText
             android:id="@+id/title_editable"
             android:layout_width="0dp"
             android:layout_height="48dp"
