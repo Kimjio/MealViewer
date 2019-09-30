@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="seoul">서울</string>
+    <string name="busan">부산</string>
+    <string name="daegu">대구</string>
+    <string name="incheon">인천</string>
+    <string name="gwangju">광주</string>
+    <string name="daejeon">대전</string>
+    <string name="ulsan">울산</string>
+    <string name="sejong">세종</string>
+    <string name="gyeonggi">경기</string>
+    <string name="gangwon">강원</string>
+    <string name="chungbuk">충북</string>
+    <string name="chungnam">충남</string>
+    <string name="jeonbuk">전북</string>
+    <string name="jeonnam">전남</string>
+    <string name="gyeongbuk">경북</string>
+    <string name="gyeongnam">경남</string>
+    <string name="jeju">제주</string>
+
+    <string name="all">전체</string>
+    <string name="kin">유치원</string>
+    <string name="ele">초등학교</string>
+    <string name="mid">중학교</string>
+    <string name="high">고등학교</string>
+    <string name="spe">특수학교</string>
+</resources>

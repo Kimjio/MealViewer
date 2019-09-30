@@ -71,7 +71,8 @@ public class SchoolSelectActivity extends BaseActivity<SchoolSelectActivityBindi
             preferenceHelper.putSchoolData(school, url);
         });
 
-        binding.btnSearch.setOnClickListener(v -> SchoolHelper.getInstance().findSchool(url, binding.inputSchoolName.getText().toString(), schools -> {
+        //TODO 학교 유형
+        binding.btnSearch.setOnClickListener(v -> SchoolHelper.getInstance().findSchool(url, binding.inputSchoolName.getText().toString(), null, (schools, error) -> {
             adapter.setSchools(schools);
         }));
 

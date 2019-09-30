@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="seoul">Seoul</string>
+    <string name="busan">Busan</string>
+    <string name="daegu">Daegu</string>
+    <string name="incheon">Incheon</string>
+    <string name="gwangju">Gwangju</string>
+    <string name="daejeon">Daejeon</string>
+    <string name="ulsan">Ulsan</string>
+    <string name="sejong">Sejong</string>
+    <string name="gyeonggi">Gyeonggi</string>
+    <string name="gangwon">Gangwon</string>
+    <string name="chungbuk">Chungbuk</string>
+    <string name="chungnam">Chungnam</string>
+    <string name="jeonbuk">Jeonbuk</string>
+    <string name="jeonnam">Jeonnam</string>
+    <string name="gyeongbuk">Gyeongbuk</string>
+    <string name="gyeongnam">Gyeongnam</string>
+    <string name="jeju">Jeju</string>
+
+    <string name="all">All</string>
+    <string name="kin">Kindergarten</string>
+    <string name="ele">Elementary School</string>
+    <string name="mid">Middle School</string>
+    <string name="high">High School</string>
+    <string name="spe">Special School</string>
+</resources>

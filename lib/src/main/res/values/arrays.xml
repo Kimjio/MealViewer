@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="cont_educations">
-        <item>Seoul</item>
-        <item>Busan</item>
-        <item>Daegu</item>
-        <item>Incheon</item>
-        <item>Gwangju</item>
-        <item>Daejeon</item>
-        <item>Ulsan</item>
-        <item>Sejong</item>
-        <item>Gyeonggi</item>
-        <item>Gangwon</item>
-        <item>Chungbuk</item>
-        <item>Chungnam</item>
-        <item>Jeonbuk</item>
-        <item>Jeonnam</item>
-        <item>Gyeongbuk</item>
-        <item>Gyeongnam</item>
-        <item>Jeju</item>
+        <item>@string/seoul</item>
+        <item>@string/busan</item>
+        <item>@string/daegu</item>
+        <item>@string/incheon</item>
+        <item>@string/gwangju</item>
+        <item>@string/daejeon</item>
+        <item>@string/ulsan</item>
+        <item>@string/sejong</item>
+        <item>@string/gyeonggi</item>
+        <item>@string/gangwon</item>
+        <item>@string/chungbuk</item>
+        <item>@string/chungnam</item>
+        <item>@string/jeonbuk</item>
+        <item>@string/jeonnam</item>
+        <item>@string/gyeongbuk</item>
+        <item>@string/gyeongnam</item>
+        <item>@string/jeju</item>
     </string-array>
 
     <string-array name="cont_education_urls">
@@ -41,11 +41,12 @@
     </string-array>
 
     <string-array name="school_type">
-        <item>Kindergarten</item>
-        <item>Elementary School</item>
-        <item>Middle School</item>
-        <item>High School</item>
-        <item>Middle·High School</item>
+        <item>@string/all</item>
+        <item>@string/kin</item>
+        <item>@string/ele</item>
+        <item>@string/mid</item>
+        <item>@string/high</item>
+        <item>@string/spe</item>
     </string-array>
 
 </resources>

@@ -27,7 +27,7 @@ public class School {
                 this.type = Type.HIGH;
                 break;
             case 5:
-                this.type = Type.MIDDLE_HIGH;
+                this.type = Type.SPECIAL;
                 break;
             default:
                 throw new IllegalArgumentException();
@@ -101,12 +101,37 @@ public class School {
         ELEMENT(2),
         MIDDLE(3),
         HIGH(4),
-        MIDDLE_HIGH(5);
+        SPECIAL(5);
 
         private final int id;
 
         Type(int id) {
             this.id = id;
+        }
+
+        public static Type parseType(String string) {
+            Type tmp;
+            switch (string) {
+                case "1":
+                    tmp = KINDER;
+                    break;
+                case "2":
+                    tmp = ELEMENT;
+                    break;
+                case "3":
+                    tmp = MIDDLE;
+                    break;
+                case "4":
+                    tmp = HIGH;
+                    break;
+                case "5":
+                    tmp = SPECIAL;
+                    break;
+                default:
+                    throw new IllegalArgumentException();
+            }
+
+            return tmp;
         }
 
         public int toInteger() {
@@ -131,7 +156,7 @@ public class School {
                     string = "고등학교";
                     break;
                 case 5:
-                    string = "중·고등학교";
+                    string = "특수학교";
                     break;
                 default:
                     throw new IllegalArgumentException();

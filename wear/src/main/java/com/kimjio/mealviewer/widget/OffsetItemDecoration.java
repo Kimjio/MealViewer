@@ -14,6 +14,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.Objects;
 
+/**
+ * @deprecated Use {@link androidx.wear.widget.WearableRecyclerView#setEdgeItemsCenteringEnabled(boolean)}
+ */
+
+@Deprecated
 public class OffsetItemDecoration extends RecyclerView.ItemDecoration {
 
     private Context context;

@@ -26,10 +26,10 @@ public class MainActivity extends BaseActivity<MainActivityBinding> {
         // Enables Always-on
         setAmbientEnabled();
 
-        SchoolHelper.getInstance().findSchool("dge.go", "대구소", schools -> {
+        SchoolHelper.getInstance().findSchool("dge.go", "대구소", null, (schools, error) -> {
             for (School school : schools) {
                 Log.d(TAG, "onCreate: " + school.toString());
-                MealHelper.getInstance(this).getMeals(school, meals -> {
+                MealHelper.getInstance(this).getMeals(school, (meals, error1) -> {
                     for (Meal meal : meals) {
                         Log.d(TAG, "onCreate: " + meal.toString());
                     }

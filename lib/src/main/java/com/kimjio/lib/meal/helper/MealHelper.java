@@ -8,8 +8,8 @@ import androidx.annotation.Nullable;
 import com.kimjio.lib.meal.database.DatabaseHelper;
 import com.kimjio.lib.meal.model.Meal;
 import com.kimjio.lib.meal.model.School;
-import com.kimjio.lib.meal.network.MealTask;
-import com.kimjio.lib.meal.network.OnTaskListener;
+import com.kimjio.lib.meal.task.MealTask;
+import com.kimjio.lib.meal.task.OnTaskListener;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -67,12 +67,12 @@ public final class MealHelper {
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(selectedDate);
 
-            new MealTask(result -> {
-                if (taskListener != null) taskListener.onTaskFinished(result);
+            new MealTask((result, error) -> {
+                if (taskListener != null) taskListener.onTaskFinished(result, error);
                 helper.inserts(result);
             }).execute(neisLocalDomain, schoolId, Integer.toString(type.toInteger()), Integer.toString(calendar.get(Calendar.YEAR)), Integer.toString(calendar.get(Calendar.MONTH) + 1));
         } else {
-            if (taskListener != null) taskListener.onTaskFinished(meals);
+            if (taskListener != null) taskListener.onTaskFinished(meals, false);
         }
     }
 }

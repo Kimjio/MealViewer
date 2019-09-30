@@ -25,7 +25,7 @@ public class MainActivity extends BaseActivity<MainActivityBinding> {
 
         Meal meal = MealHelper.getInstance(this).getMeal(helper.getSchoolId());
         if (meal == null)
-            MealHelper.getInstance(this).getMeals(helper.getSchoolId(), helper.getNeisLocalDomain(), helper.getSchoolType(), meals -> {
+            MealHelper.getInstance(this).getMeals(helper.getSchoolId(), helper.getNeisLocalDomain(), helper.getSchoolType(), (meals, error) -> {
 
             });
     }

@@ -5,8 +5,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?android:selectableItemBackground">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/image"
@@ -17,21 +16,55 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription"
             tools:src="@drawable/ic_location" />
 
-        <TextView
-            android:id="@+id/title"
+        <LinearLayout
+            android:id="@+id/title_layout"
             android:layout_width="0dp"
-            android:layout_height="@dimen/menu_icon_size"
+            android:layout_height="0dp"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="8dp"
             android:gravity="center_vertical"
-            android:textColor="?android:textColorPrimary"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/image"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Location" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="marquee"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:marqueeRepeatLimit="2"
+                android:singleLine="true"
+                android:textColor="?android:textColorPrimary"
+                tools:text="대구성서초등학교병설유치원" />
+
+            <TextView
+                android:id="@+id/sub_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:textSize="12sp"
+                android:visibility="gone"
+                tools:text="@string/daegu"
+                tools:visibility="visible" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/wrapper"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@null"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
             android:id="@+id/title_editable"
@@ -40,6 +73,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginEnd="16dp"
             android:imeOptions="actionDone"
+            android:importantForAutofill="no"
             android:inputType="text"
             android:textSize="14sp"
             android:visibility="gone"
@@ -47,7 +81,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/image"
             app:layout_constraintTop_toTopOf="@+id/image"
-            tools:text="Name" />
+            tools:ignore="LabelFor"
+            tools:text="@string/hint_school_name" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

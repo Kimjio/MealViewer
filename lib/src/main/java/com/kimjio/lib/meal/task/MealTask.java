@@ -1,4 +1,4 @@
-package com.kimjio.lib.meal.network;
+package com.kimjio.lib.meal.task;
 
 import android.os.AsyncTask;
 import android.text.Html;
@@ -28,6 +28,7 @@ public class MealTask extends AsyncTask<String, Integer, List<Meal>> {
     private String schoolId;
     private String selectedYear;
     private String selectedMonth;
+    private boolean error;
 
     public MealTask(OnTaskListener<List<Meal>> taskListener) {
         this.taskListener = taskListener;
@@ -35,7 +36,7 @@ public class MealTask extends AsyncTask<String, Integer, List<Meal>> {
 
     @Override
     protected void onPostExecute(List<Meal> meals) {
-        if (taskListener != null) taskListener.onTaskFinished(meals);
+        if (taskListener != null) taskListener.onTaskFinished(meals, error);
     }
 
     @Override
@@ -56,6 +57,7 @@ public class MealTask extends AsyncTask<String, Integer, List<Meal>> {
             }
         } catch (IOException | ParseException e) {
             e.printStackTrace();
+            error = true;
         }
         return meals;
     }

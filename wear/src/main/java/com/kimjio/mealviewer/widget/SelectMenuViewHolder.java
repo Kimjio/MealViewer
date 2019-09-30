@@ -1,5 +1,6 @@
 package com.kimjio.mealviewer.widget;
 
+import android.graphics.Color;
 import android.view.View;
 
 import androidx.annotation.NonNull;

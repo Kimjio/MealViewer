@@ -1,9 +1,11 @@
 package com.kimjio.mealviewer.widget;
 
 import android.content.Context;
+import android.os.Parcelable;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.wear.widget.WearableLinearLayoutManager;
 
@@ -31,6 +33,11 @@ public class ScaleLinearLayoutManager extends WearableLinearLayoutManager {
     }
 
     @Override
+    public void detachView(@NonNull View child) {
+        super.detachView(child);
+    }
+
+    @Override
     public int scrollVerticallyBy(int dy, RecyclerView.Recycler recycler, RecyclerView.State state) {
         int orientation = getOrientation();
         if (orientation == RecyclerView.VERTICAL) {
@@ -52,9 +59,9 @@ public class ScaleLinearLayoutManager extends WearableLinearLayoutManager {
                 View childImg = child.findViewById(R.id.image);
                 childImg.setScaleX(scale);
                 childImg.setScaleY(scale);
-                View childTitle = child.findViewById(R.id.title);
+                View childTitle = child.findViewById(R.id.title_layout);
                 View childTitleEditable = child.findViewById(R.id.title_editable);
-                if (childTitle.getVisibility() == View.GONE)
+                if (childTitleEditable.getVisibility() == View.VISIBLE)
                     childTitleEditable.setTranslationX(-(((ViewGroup.MarginLayoutParams) childTitle.getLayoutParams()).getMarginStart() * 3) * (1 - scale));
                 else
                     childTitle.setTranslationX(-(((ViewGroup.MarginLayoutParams) childTitle.getLayoutParams()).getMarginStart() * 3) * (1 - scale));
