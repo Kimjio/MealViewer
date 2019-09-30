@@ -1,11 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     defaultConfig {
         applicationId "com.kimjio.mealviewer"
         minSdkVersion 25
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
     }
@@ -35,6 +35,7 @@ dependencies {
     implementation 'androidx.percentlayout:percentlayout:1.0.0'
     implementation 'androidx.lifecycle:lifecycle-common-java8:2.1.0'
     implementation 'com.kimjio:handwritingfix:1.0'
+    implementation 'com.kimjio:flingwearablerecyclerview:1.0'
     implementation 'com.google.android.support:wearable:2.5.0'
     implementation 'com.google.android.gms:play-services-wearable:17.0.0'
     compileOnly 'com.google.android.wearable:wearable:2.5.0'

@@ -105,7 +105,6 @@ public class SelectMenuAdapter extends WearableRecyclerView.Adapter<SelectMenuVi
                 break;
             case 2:
                 holder.binding.titleEditable.setHint(R.string.hint_school_name);
-                holder.binding.titleEditable.setSelected(false);
                 holder.binding.titleEditable.addTextChangedListener(new TextWatcher() {
                     @Override
                     public void beforeTextChanged(CharSequence s, int start, int count, int after) {

@@ -2,6 +2,7 @@ package com.kimjio.mealviewer.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.wearable.view.AcceptDenyDialog;
 import android.view.View;
 
 import androidx.recyclerview.widget.LinearSnapHelper;
@@ -36,7 +37,7 @@ public class SchoolSearchActivity extends BaseActivity<SchoolSearchActivityBindi
                 new Filter.Builder().addFilter(SchoolTask.FILTER_SCHOOL_TYPE, Integer.parseInt(intent.getCharSequenceExtra(EXTRA_SCHOOL_TYPE).toString())).build(), (schools, error) -> {
                     binding.progress.setVisibility(View.GONE);
                     binding.list.setAdapter(new SearchAdapter(schools, error, ((position, item) -> {
-
+                        AcceptDenyDialog dialog = new AcceptDenyDialog(this);
                     })));
                 });
 
