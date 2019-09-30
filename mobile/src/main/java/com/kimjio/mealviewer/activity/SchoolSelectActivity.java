@@ -11,8 +11,6 @@ import androidx.annotation.Nullable;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.wearable.DataClient;
-import com.google.android.gms.wearable.Node;
-import com.google.android.gms.wearable.PutDataMapRequest;
 import com.google.android.gms.wearable.PutDataRequest;
 import com.google.android.gms.wearable.Wearable;
 import com.kimjio.lib.meal.Constants;
@@ -30,11 +28,6 @@ public class SchoolSelectActivity extends BaseActivity<SchoolSelectActivityBindi
     private SchoolAdapter adapter;
 
     private String url;
-
-    @Override
-    protected int layoutId() {
-        return R.layout.school_select_activity;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,9 +65,7 @@ public class SchoolSelectActivity extends BaseActivity<SchoolSelectActivityBindi
         });
 
         //TODO 학교 유형
-        binding.btnSearch.setOnClickListener(v -> SchoolHelper.getInstance().findSchool(url, binding.inputSchoolName.getText().toString(), null, (schools, error) -> {
-            adapter.setSchools(schools);
-        }));
+        binding.btnSearch.setOnClickListener(v -> SchoolHelper.getInstance().findSchool(url, binding.inputSchoolName.getText().toString(), null, (schools, error) -> adapter.setSchools(schools)));
 
     }
 

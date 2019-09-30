@@ -1,6 +1,5 @@
 package com.kimjio.mealviewer.widget;
 
-import android.graphics.Color;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -11,16 +10,16 @@ import com.kimjio.mealviewer.databinding.SelectMenuBinding;
 
 import java.util.Objects;
 
-public class SelectMenuViewHolder extends WearableRecyclerView.ViewHolder {
+class SelectMenuViewHolder extends WearableRecyclerView.ViewHolder {
 
     @NonNull
     SelectMenuBinding binding;
 
-    public SelectMenuViewHolder(@NonNull View itemView) {
+    SelectMenuViewHolder(@NonNull View itemView) {
         this(itemView, false);
     }
 
-    public SelectMenuViewHolder(@NonNull View itemView, boolean editable) {
+    SelectMenuViewHolder(@NonNull View itemView, boolean editable) {
         super(itemView);
         binding = Objects.requireNonNull(DataBindingUtil.bind(itemView));
         if (editable) {

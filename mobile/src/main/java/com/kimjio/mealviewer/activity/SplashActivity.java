@@ -5,15 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.kimjio.lib.meal.helper.PreferenceHelper;
-import com.kimjio.mealviewer.R;
 import com.kimjio.mealviewer.databinding.SplashActivityBinding;
 
 public class SplashActivity extends BaseActivity<SplashActivityBinding> {
-
-    @Override
-    protected int layoutId() {
-        return R.layout.splash_activity;
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

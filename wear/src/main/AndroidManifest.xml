@@ -44,8 +44,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.OpenOnPhoneActivity"/>
-
+        <activity android:name=".activity.SubSelectActivity" />
+        <activity android:name=".activity.SchoolSearchActivity"/>
+        <activity android:name=".activity.OpenOnPhoneActivity" />
         <activity android:name="androidx.wear.activity.ConfirmationActivity" />
     </application>
 
