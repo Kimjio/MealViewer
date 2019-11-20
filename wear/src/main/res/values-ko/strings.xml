@@ -10,4 +10,5 @@
 
     <string name="not_connected">연결되지 않음</string>
     <string name="error">오류가 발생했습니다</string>
+    <string name="confirm_message">계속하시겠습니까?</string>
 </resources>

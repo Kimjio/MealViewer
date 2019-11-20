@@ -36,6 +36,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-common-java8:2.1.0'
     implementation 'com.kimjio:handwritingfix:1.0'
     implementation 'com.kimjio:flingwearablerecyclerview:1.0'
+    implementation 'com.kimjio:weardatetimepicker:1.0'
     implementation 'com.google.android.support:wearable:2.5.0'
     implementation 'com.google.android.gms:play-services-wearable:17.0.0'
     compileOnly 'com.google.android.wearable:wearable:2.5.0'

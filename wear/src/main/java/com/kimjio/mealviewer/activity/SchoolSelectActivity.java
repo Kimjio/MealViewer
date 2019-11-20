@@ -81,6 +81,11 @@ public class SchoolSelectActivity extends BaseActivity<SchoolSelectActivityBindi
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == SelectMenuAdapter.REQ_SEARCH && resultCode == RESULT_OK) {
+            startActivity(new Intent(this, MainActivity.class));
+            finish();
+            return;
+        }
         adapter.onActivityResult(requestCode, resultCode, data);
     }
 

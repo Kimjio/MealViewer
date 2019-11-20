@@ -24,7 +24,7 @@ public class SelectMenuAdapter extends WearableRecyclerView.Adapter<SelectMenuVi
 
     private static final int REQ_COUNTRY = 2;
     private static final int REQ_SCHOOL_TYPE = 3;
-    private static final int REQ_SEARCH = 4;
+    public static final int REQ_SEARCH = 4;
 
     private static final int TYPE_TITLE = 0;
     private static final int TYPE_EDITABLE = 1;
@@ -78,8 +78,8 @@ public class SelectMenuAdapter extends WearableRecyclerView.Adapter<SelectMenuVi
                     Intent intent = new Intent(v.getContext(), SubSelectActivity.class);
                     intent.putExtra(SubSelectActivity.EXTRA_CURRENT_VALUE, country)
                             .putExtra(SubSelectActivity.EXTRA_MENU_ICON, R.drawable.ic_rounded_location)
-                            .putExtra(SubSelectActivity.EXTRA_MENUS, R.array.cont_educations)
-                            .putExtra(SubSelectActivity.EXTRA_MENU_VALUES, R.array.cont_education_urls);
+                            .putExtra(SubSelectActivity.EXTRA_MENUS, R.array.country_educations)
+                            .putExtra(SubSelectActivity.EXTRA_MENU_VALUES, R.array.country_education_urls);
                     if (menuListener != null)
                         menuListener.openSubMenu(intent, REQ_COUNTRY);
                 });

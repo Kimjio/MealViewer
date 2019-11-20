@@ -3,6 +3,7 @@ package com.kimjio.mealviewer.widget;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -44,6 +45,9 @@ public class SearchAdapter extends WearableRecyclerView.Adapter<SelectMenuViewHo
         holder.binding.image.setImageResource(R.drawable.ic_rounded_school_name);
         holder.binding.title.setText(item.getName());
         holder.binding.title.setSelected(true);
+        holder.binding.subTitle.setText(item.getAddress());
+        holder.binding.subTitle.setSelected(true);
+        holder.binding.subTitle.setVisibility(View.VISIBLE);
         holder.itemView.setOnClickListener(v -> {
             if (listener != null)
                 listener.onItemClick(position, item);

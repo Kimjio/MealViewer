@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="cont_educations">
+    <string-array name="country_educations">
         <item>@string/seoul</item>
         <item>@string/busan</item>
         <item>@string/daegu</item>
@@ -20,7 +20,7 @@
         <item>@string/jeju</item>
     </string-array>
 
-    <string-array name="cont_education_urls">
+    <string-array name="country_education_urls">
         <item>sen.go</item>
         <item>pen.go</item>
         <item>dge.go</item>

@@ -4,14 +4,12 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.kimjio.lib.meal.helper.MealHelper;
-import com.kimjio.lib.meal.helper.SchoolHelper;
-import com.kimjio.lib.meal.model.Meal;
-import com.kimjio.lib.meal.model.School;
+import com.kimjio.lib.meal.helper.PreferenceHelper;
 import com.kimjio.mealviewer.databinding.MainActivityBinding;
 
-public class MainActivity extends BaseActivity<MainActivityBinding> {
+import java.util.Calendar;
 
-    private static final String TAG = "MainActivity";
+public class MainActivity extends BaseActivity<MainActivityBinding> {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,15 +18,10 @@ public class MainActivity extends BaseActivity<MainActivityBinding> {
         // Enables Always-on
         setAmbientEnabled();
 
-        SchoolHelper.getInstance().findSchool("dge.go", "대구소", null, (schools, error) -> {
-            for (School school : schools) {
-                Log.d(TAG, "onCreate: " + school.toString());
-                MealHelper.getInstance(this).getMeals(school, (meals, error1) -> {
-                    for (Meal meal : meals) {
-                        Log.d(TAG, "onCreate: " + meal.toString());
-                    }
-                });
-            }
+        PreferenceHelper preferenceHelper = PreferenceHelper.getInstance(this);
+        MealHelper.getInstance(this).getMeals(preferenceHelper.getSchoolId(), preferenceHelper.getNeisLocalDomain(), preferenceHelper.getSchoolType(), (meals, error) -> {
+            int i = Calendar.getInstance().get(Calendar.DAY_OF_MONTH);
+            binding.text.setText(meals.get(i - 1).toString());
         });
     }
 }

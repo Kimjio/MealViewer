@@ -40,18 +40,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ellipsize="marquee"
-                android:focusable="true"
                 android:gravity="center_vertical"
                 android:marqueeRepeatLimit="2"
                 android:singleLine="true"
                 android:textColor="?android:textColorPrimary"
-                tools:text="대구성서초등학교병설유치원" />
+                tools:text="@string/select_menu_country" />
 
             <TextView
                 android:id="@+id/sub_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:ellipsize="marquee"
                 android:gravity="center_vertical"
+                android:marqueeRepeatLimit="2"
+                android:singleLine="true"
                 android:textSize="12sp"
                 android:visibility="gone"
                 tools:text="@string/daegu"

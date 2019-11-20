@@ -2,7 +2,7 @@ package com.kimjio.lib.meal.database;
 
 final class DatabaseManager {
     static final int DB_VERSION = 1;
-    static final String DB_NAME = "meal_viewer";
+    static final String DB_NAME = "meal_viewer.db";
     static final String TABLE_NAME_MEAL = "meal";
 
     static final String MEAL_COLUMN_ID = "id";

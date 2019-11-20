@@ -16,6 +16,8 @@ import com.google.android.gms.wearable.Wearable;
 import com.kimjio.lib.meal.Constants;
 import com.kimjio.lib.meal.helper.PreferenceHelper;
 import com.kimjio.lib.meal.helper.SchoolHelper;
+import com.kimjio.lib.meal.task.Filter;
+import com.kimjio.lib.meal.task.SchoolTask;
 import com.kimjio.mealviewer.R;
 import com.kimjio.mealviewer.databinding.SchoolSelectActivityBinding;
 import com.kimjio.mealviewer.widget.SchoolAdapter;
@@ -28,6 +30,7 @@ public class SchoolSelectActivity extends BaseActivity<SchoolSelectActivityBindi
     private SchoolAdapter adapter;
 
     private String url;
+    private int type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,10 +44,22 @@ public class SchoolSelectActivity extends BaseActivity<SchoolSelectActivityBindi
                 .addOnConnectionFailedListener(this)
                 .build();
 
-        binding.spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        binding.countrySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                url = getResources().getStringArray(R.array.cont_education_urls)[position];
+                url = getResources().getStringArray(R.array.country_education_urls)[position];
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        binding.typeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                type = position;
             }
 
             @Override
@@ -65,7 +80,7 @@ public class SchoolSelectActivity extends BaseActivity<SchoolSelectActivityBindi
         });
 
         //TODO 학교 유형
-        binding.btnSearch.setOnClickListener(v -> SchoolHelper.getInstance().findSchool(url, binding.inputSchoolName.getText().toString(), null, (schools, error) -> adapter.setSchools(schools)));
+        binding.btnSearch.setOnClickListener(v -> SchoolHelper.getInstance().findSchool(url, binding.inputSchoolName.getText().toString(), new Filter.Builder().addFilter(SchoolTask.FILTER_SCHOOL_TYPE, type).build(), (schools, error) -> adapter.setSchools(schools)));
 
     }
 

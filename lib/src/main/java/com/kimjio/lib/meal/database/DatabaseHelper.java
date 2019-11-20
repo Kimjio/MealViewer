@@ -21,7 +21,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static DatabaseHelper INSTANCE;
 
     private DatabaseHelper(@Nullable Context context) {
-        super(context, "meal_viewer.db", null, DatabaseManager.DB_VERSION);
+        super(context, DatabaseManager.DB_NAME, null, DatabaseManager.DB_VERSION);
     }
 
     @NonNull
@@ -36,7 +36,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        //db.execSQL("PRAGMA foreign_keys = ON;");
         db.execSQL(DatabaseManager.getCreateTableMeal());
     }
 

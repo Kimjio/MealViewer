@@ -8,19 +8,21 @@ import android.view.View;
 import androidx.recyclerview.widget.LinearSnapHelper;
 
 import com.kimjio.lib.meal.helper.SchoolHelper;
+import com.kimjio.lib.meal.model.School;
 import com.kimjio.lib.meal.task.Filter;
 import com.kimjio.lib.meal.task.SchoolTask;
+import com.kimjio.mealviewer.R;
 import com.kimjio.mealviewer.databinding.SchoolSearchActivityBinding;
 import com.kimjio.mealviewer.widget.ScaleLinearLayoutManager;
 import com.kimjio.mealviewer.widget.SearchAdapter;
+
+import java.util.Objects;
 
 public class SchoolSearchActivity extends BaseActivity<SchoolSearchActivityBinding> {
 
     public static final String EXTRA_LOCAL_DOMAIN = "local_domain";
     public static final String EXTRA_SCHOOL_NAME = "school_name";
     public static final String EXTRA_SCHOOL_TYPE = "school_type";
-
-    private static final String TAG = "SchoolSearchActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,13 +35,31 @@ public class SchoolSearchActivity extends BaseActivity<SchoolSearchActivityBindi
         binding.list.setEdgeItemsCenteringEnabled(true);
         binding.list.setLayoutManager(new ScaleLinearLayoutManager(this));
 
-        SchoolHelper.getInstance().findSchool(intent.getCharSequenceExtra(EXTRA_LOCAL_DOMAIN).toString(), intent.getCharSequenceExtra(EXTRA_SCHOOL_NAME).toString(),
-                new Filter.Builder().addFilter(SchoolTask.FILTER_SCHOOL_TYPE, Integer.parseInt(intent.getCharSequenceExtra(EXTRA_SCHOOL_TYPE).toString())).build(), (schools, error) -> {
+        String localDomain = Objects.requireNonNull(intent.getCharSequenceExtra(EXTRA_LOCAL_DOMAIN)).toString();
+        String schoolName = Objects.requireNonNull(intent.getCharSequenceExtra(EXTRA_SCHOOL_NAME)).toString();
+        String schoolTypeText = Objects.requireNonNull(intent.getCharSequenceExtra(EXTRA_SCHOOL_TYPE)).toString();
+
+        SchoolHelper.getInstance().findSchool(localDomain, schoolName,
+                new Filter.Builder().addFilter(SchoolTask.FILTER_SCHOOL_TYPE, Integer.parseInt(schoolTypeText)).build(), (schools, error) -> {
                     binding.progress.setVisibility(View.GONE);
                     binding.list.setAdapter(new SearchAdapter(schools, error, ((position, item) -> {
                         AcceptDenyDialog dialog = new AcceptDenyDialog(this);
+                        dialog.setTitle(item.getName());
+                        dialog.setMessage(getString(R.string.confirm_message));
+                        dialog.setPositiveButton(((dialogInterface, which) -> {
+                            setSchool(item, localDomain);
+                        }));
+                        dialog.setNegativeButton(((dialogInterface, which) -> {
+                        }));
+                        dialog.show();
                     })));
                 });
 
+    }
+
+    private void setSchool(School item, String localDomain) {
+        getPreferenceHelper().putSchoolData(item, localDomain);
+        setResult(RESULT_OK);
+        finish();
     }
 }

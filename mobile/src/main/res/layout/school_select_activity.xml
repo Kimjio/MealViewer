@@ -16,18 +16,29 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.kimjio.mealviewer.widget.HintSpinner
-            android:id="@+id/spinner"
-            android:layout_width="match_parent"
+            android:id="@+id/country_spinner"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:entries="@array/cont_educations"
-            android:hint="@string/hint_select_cont"
-            android:prompt="@string/hint_select_cont"
-            android:spinnerMode="dialog"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:entries="@array/country_educations"
+            android:hint="@string/hint_select_country"
+            app:layout_constraintEnd_toStartOf="@+id/type_spinner"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/app_bar" />
+
+        <com.kimjio.mealviewer.widget.HintSpinner
+            android:id="@+id/type_spinner"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:entries="@array/school_type"
+            android:hint="@string/hint_select_type"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/country_spinner"
             app:layout_constraintTop_toBottomOf="@+id/app_bar" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -42,7 +53,7 @@
             app:layout_constraintEnd_toStartOf="@+id/btn_search"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinner">
+            app:layout_constraintTop_toBottomOf="@+id/country_spinner">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/input_school_name"

@@ -28,24 +28,18 @@
             android:name="com.google.android.wearable.standalone"
             android:value="true" />
 
-        <activity
-            android:name=".activity.MainActivity"
-            android:label="@string/app_name">
+        <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.SchoolSelectActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.SchoolSelectActivity" />
         <activity android:name=".activity.SubSelectActivity" />
-        <activity android:name=".activity.SchoolSearchActivity"/>
+        <activity android:name=".activity.SchoolSearchActivity" />
         <activity android:name=".activity.OpenOnPhoneActivity" />
         <activity android:name="androidx.wear.activity.ConfirmationActivity" />
     </application>

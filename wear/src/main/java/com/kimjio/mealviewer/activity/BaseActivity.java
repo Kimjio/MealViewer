@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 
+import com.kimjio.lib.meal.helper.PreferenceHelper;
 import com.kimjio.mealviewer.R;
 
 public abstract class BaseActivity<VB extends ViewDataBinding> extends WearableActivity {
@@ -38,5 +39,9 @@ public abstract class BaseActivity<VB extends ViewDataBinding> extends WearableA
         }
 
         return 0;
+    }
+
+    protected PreferenceHelper getPreferenceHelper() {
+        return PreferenceHelper.getInstance(this);
     }
 }
